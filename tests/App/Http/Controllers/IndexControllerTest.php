@@ -24,7 +24,7 @@ class IndexControllerTest extends TestCase
     public function testIndexController()
     {
        $foo = $this->get('/?q=Deadwood');
-       var_dump($foo);
+     
 
        $this->assertTrue(2!=3-4);
     }
