@@ -2,5 +2,16 @@
 - PHPUnit 8.5.8
 - Lumen (7.2.1) (Laravel Components ^7.0)
 - git version 2.27.0
+- Composer version 1.10.9
+- PhpStorm 2020.1 (IDE)
 
-- IDE PhpStorm 2020.1
+- https://travis-ci.org/svenschrodt/tvm-json-api (CI environment)
+
+- Dependencies in composer.json
+
+Installation
+
+> git clone https://github.com/svenschrodt/tvm-json-api
+> cd tvm-json-api
+> composer install
+

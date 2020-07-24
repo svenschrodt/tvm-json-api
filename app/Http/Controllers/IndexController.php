@@ -14,12 +14,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-
+use Laravel\Lumen\Routing\Controller;
 
 class IndexController extends Controller
 {
 
-    public function search(Request $request)
+    /***
+     * Action method performing search of external TVMaze API
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     *
+     */
+    public function search(Request $request) : \Illuminate\Http\JsonResponse
     {
 
         //@todo --> to config file
