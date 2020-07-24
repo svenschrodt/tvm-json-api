@@ -1,8 +1,12 @@
 language: php
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 php:
-  - 7.2
-  - 7.3
-  - 7.4
+  - '7.2'
+  - '7.3'
+  - '7.4'
 
   # omitting "script:" will default to phpunit
 notifications:
@@ -10,10 +14,9 @@ notifications:
     on_success: never
     on_failure: change
 
-jobs:
-  include:
-    - stage: Test
-      install:
-        - composer install
-      script:
-        - vendor/bin/phpunit
+
+before_script:
+  - composer install --dev
+
+script:
+  - ./vendor/bin/phpunit
