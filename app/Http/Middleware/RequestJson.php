@@ -4,6 +4,7 @@
  *
  * - checking if current search is cached, or
  * - calling external TVMaze's JSON API endpoint
+ * - and returning query result
  *
  * @package tvm-json-api
  * @author Sven Schrodt<sven@schrodt-service.net>
@@ -16,66 +17,49 @@
 
 namespace App\Http\Middleware;
 
+use Laravel\Lumen\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 use Closure;
+use App\Models\Show;
 
 class RequestJson
 {
 
-
     /**
-     * URI of external API endpoint
+     * Model representing Show data
      *
-     * @var string
+     * @var \App\Models\Show
      */
-    protected $externalApi = '';
-
-
-    /**
-     * Time to live for static file cache
-     *
-     * @var int
-     */
-    protected $cacheTtl = 0;
+    protected $showModel;
 
     /**
-     * RequestJson constructor
-     *
+     * RequestJson constructor.
      */
     public function __construct()
     {
-        $this->externalApi = config('main.extApi');
-        $this->cacheTtl = config('main.cacheTtl');
+        $this->showModel = new Show();
     }
 
 
     /**
-     * Handle external request for an incoming request, if data is not cached
+     * Handle external request for an incoming request, if data is not cached,
+     * returning result data
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-
-
+       $caseOff = strtolower($request->input('q'));
+        if(!$this->showModel->isInCache($caseOff)) {
+            $this->showModel->storeToCache($caseOff,    $this->showModel->callExternalApi($caseOff));
+        }
         return $next($request);
     }
 
 
-    protected function callExternalApi(string $query)
-    {
-
-    }
 
 
-    protected function filterResults(string $query)
-    {
-
-    }
-
-    protected function checkIfInCache(string $query)
-    {
-
-    }
 }

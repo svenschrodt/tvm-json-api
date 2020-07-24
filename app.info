@@ -14,4 +14,5 @@ Installation
 > git clone https://github.com/svenschrodt/tvm-json-api
 > cd tvm-json-api
 > composer install
+> php artisan config:cache
 

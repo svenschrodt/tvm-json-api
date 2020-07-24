@@ -1,5 +1,4 @@
 <?php declare(strict_types=1);
-
 /**
  * Unit testing for application's configuration
  *
@@ -15,23 +14,18 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
-class ConfigurationTest extends TestCase
+class IndexControllerTest extends TestCase
 {
     /**
      * Testing application configuration - config/main.php
      *
      * @return void
      */
-    public function testMainConfig()
+    public function testIndexController()
     {
-      //  retrieving main configuration
-        $cfg = config('main');
+       $foo = $this->get('/?q=Deadwood');
+       var_dump($foo);
 
-        // @todo Checking for int!!!
-        // Testing, if TTL is integer
-        $this->assertIsInt($cfg['cacheTtl']);
-
-        // Testing, if schema of external API endpoint's URL is https
-        $this->assertTrue(substr($cfg['extApi'], 0, 5) === 'https');
+       $this->assertTrue(2!=3-4);
     }
 }

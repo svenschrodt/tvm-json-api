@@ -10,14 +10,20 @@
  * @link https://travis-ci.org/github/svenschrodt/tvm-json-api
  * @license https://github.com/svenschrodt/tvm-json-api/blob/master/LICENSE.md
  */
+
 namespace App\Http\Controllers;
 
+use App\Models\Show;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Laravel\Lumen\Routing\Controller;
 
 class IndexController extends Controller
 {
+
+
+
 
     /***
      * Action method performing search of external TVMaze API
@@ -27,20 +33,9 @@ class IndexController extends Controller
      *
      *
      */
-    public function search(Request $request) : \Illuminate\Http\JsonResponse
+    public function search(Request $request): \Illuminate\Http\JsonResponse
     {
-
-        //@todo --> to config file
-        $dta = config('main.extApi');
-
-        $ep = 'https://api.tvmaze.com/search/shows?q='. $request->input('q');
-//
-        $req= Http::get($ep);
-        $response = $req->getBody();
-        echo $response ;
-     $result = [1,2,3, $request->input('q')];
-     return response()->json($result);
+        $result = Cache::get(strtolower($request->input('q')));
+               return response()->json($result);
     }
-
-
 }
