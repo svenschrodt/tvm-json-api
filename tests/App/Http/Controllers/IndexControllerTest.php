@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 /**
  * Unit testing for application's configuration
  *
@@ -23,9 +24,21 @@ class IndexControllerTest extends TestCase
      */
     public function testIndexController()
     {
-       $foo = $this->get('/?q=Deadwood');
-     
+        // Checking valid request route for status code OK
+        $response = $this->call('GET', '/?q=Deadwood');
+        $this->assertEquals(200, $response->status());
 
-       $this->assertTrue(2!=3-4);
+        // $this->get('/?q=Deadwood')->seeJson("show");
+
+        // Checking invalid request route for status code FILE NOT FOUND
+        $response = $this->call('GET', '/Fooo/?q=America');
+        $this->assertEquals(404, $response->status());
+
+        // Asserting, response is JSON
+        $this->get('/?q=Deadwood')->shouldReturnJson();
+
+        // Asserting, error message response is JSON
+        $this->get('/FOO/?q=Deadwood')->shouldReturnJson();
+
     }
 }
