@@ -1,7 +1,11 @@
 <?php declare(strict_types=1);
 
 /**
- * Unit testing for application's configuration
+ * Unit testing for index controller
+ *
+ * - Checking status codes and content type at this point only :(
+ *
+ * @todo Implementing more test analysing JSON response
  *
  * @package tvm-json-api
  * @author Sven Schrodt<sven@schrodt-service.net>

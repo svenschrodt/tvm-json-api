@@ -1,7 +1,13 @@
 # tvm-json-api
-JSON API consuming TVMaze API  Lumen micro framework
+JSON API consuming TVMaze API  with Lumen micro framework
 
-
+## System requirements
+  - PHP 7.3+,
+  - composer and 
+  - git
+   
+  All other dependencies are managed by composer
+  
 ## Short description of service
 
 JSON-API consuming 3rd party service TVMaze
@@ -10,10 +16,15 @@ The application returns information on TV shows, if found by search criteria sub
 Only this route to JSON API is valid:
 <code>/?q={SEARCH_VALUE}</code>
 
-All other http request will be responded with an JSOn error message and corresponding HTTP status 404 (file not found)
+All other http request will be responded with an JSON error message and corresponding HTTP status 404 (file not found)
 
 ### Cache
-Each response will bes stored in a cache (TTL is configured as 3600 seconds by default  - see: config/main.php) to minimize external HTTP requests. If found in cache, the data for current search critierion out of the cache. Currently the cache is implemented as simple file system based key-value- store.  Serialized data is indexed by (lower cased) search criterion as key.
+Each response will bes stored in a cache (TTL is configured as 3600 seconds by default  - see: <code>config/main.php</code>) 
+to minimize external HTTP requests. 
+If found in cache, the data for current search critierion will be read from cache instead of calling external API. 
+
+Currently the cache is implemented as simple file system based key-value- store.  Serialized data is indexed by 
+(lower cased) search criterion as key.
 
 
 ### Filtering
@@ -28,8 +39,8 @@ There are two filter modes (to be set in  App\Models\Show):
 - PHP 7.4.8 (PHP <b>7.3+ required</b>)
 - PHPUnit 8.5.8
 - Lumen (7.2.1) (Laravel Components ^7.0)
-- git version 2.27.0
-- Composer version 1.10.9
+- git <b>(required)</b> version 2.27.0
+- Composer <b>(required)</b> version 1.10.9
 - PhpStorm 2020.1 (IDE)
 
 ## Source 
