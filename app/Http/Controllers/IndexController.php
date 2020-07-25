@@ -21,12 +21,10 @@ use Laravel\Lumen\Routing\Controller;
 
 class IndexController extends Controller
 {
-
-
-
-
     /***
-     * Action method performing search of external TVMaze API
+     * Action method performing search
+     * - from cache, if in it
+     * - from external TVMaze API
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -35,7 +33,13 @@ class IndexController extends Controller
      */
     public function search(Request $request): \Illuminate\Http\JsonResponse
     {
+        /**
+         * Middleware implemented
+         * @see \App\Http\Middleware\RequestJson
+         * */
         $result = Cache::get(strtolower($request->input('q')));
-               return response()->json($result);
+
+        // Encoding response as JSON and send appropriate headers
+        return response()->json($result);
     }
 }

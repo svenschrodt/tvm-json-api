@@ -14,7 +14,7 @@
 //PSR-4 Autoloading of 3rd party code
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Bootstrapping applicatiion
+// Bootstrapping application
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
     dirname(__DIR__)
 ))->bootstrap();

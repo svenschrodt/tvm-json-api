@@ -25,7 +25,7 @@ There are two filter modes (to be set in  App\Models\Show):
 - EQUALS - the original name must be equl to search criterion
 
 ## Current environment:
-- PHP 7.4.8
+- PHP 7.4.8 (PHP <b>7.3+ required</b>)
 - PHPUnit 8.5.8
 - Lumen (7.2.1) (Laravel Components ^7.0)
 - git version 2.27.0
@@ -57,3 +57,76 @@ CI environment for repository can be found at Travis CI:
 - Implementing automated frontend-testing (Selenium, Cypress ...)
 - Extending CI Workflow (Code coverage testing, calcluating metrics etc. )
 
+## Overview project files 
+
+<pre>
+├── app
+│   ├── Console
+│   │   ├── Commands
+│   │   └── Kernel.php
+│   ├── Events
+│   │   ├── Event.php
+│   │   └── ExampleEvent.php
+│   ├── Exceptions
+│   │   └── Handler.php
+│   ├── Http
+│   │   ├── Controllers
+│   │   │   └── IndexController.php
+│   │   └── Middleware
+│   │       └── RequestJson.php
+│   ├── Listeners
+│   │   └── ExampleListener.php
+│   ├── Meta
+│   │   └── Mapping.php
+│   ├── Models
+│   │   └── Show.php
+│   ├── Providers
+│   │   ├── AppServiceProvider.php
+│   │   ├── AuthServiceProvider.php
+│   └─  │   └── EventServiceProvider.php
+│  
+├── app.info
+├── artisan
+├── bootstrap
+│   └── app.php
+├── composer.json
+├── composer.lock
+├── config
+│   ├── cache.php
+│   └── main.php
+├── database
+│   ├── factories
+│   │   └── ModelFactory.php
+│   ├── migrations
+│   └── seeds
+│       └── DatabaseSeeder.php
+├── files.txt
+├── LICENSE
+├── phpunit.xml
+├── public
+│   └── index.php
+├── README.md
+├── resources
+│   └── views
+├── routes
+│   └── web.php
+├── storage
+│   ├── app
+│   ├── framework
+│   │   ├── cache
+│   │   │   └── data
+│   │   └── views
+│   └── logs
+├── tests
+│   ├── App
+│   │   ├── Http
+│   │   │   └── Controllers
+│   │   │       └── IndexControllerTest.php
+│   │   └── Models
+│   │       └── ShowTest.php
+│   ├── ConfigurationTest.php
+│   └── TestCase.php
+├── TVMaze_JSON_API_Description.pdf
+└── TVMaze_JSON_API_Description.rtf
+
+</pre>

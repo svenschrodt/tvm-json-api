@@ -1,7 +1,4 @@
 <?php declare(strict_types=1);
-
-use Illuminate\Support\Str;
-
 /**
  * Cache configuration file - we only use file system cache here
  *
@@ -13,6 +10,7 @@ use Illuminate\Support\Str;
  * @link https://travis-ci.org/github/svenschrodt/tvm-json-api
  * @license https://github.com/svenschrodt/tvm-json-api/blob/master/LICENSE.md
  */
+use Illuminate\Support\Str;
 return [
     'default' => env('CACHE_DRIVER', 'file'),
     'stores' => [
