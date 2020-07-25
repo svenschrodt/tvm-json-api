@@ -43,8 +43,8 @@ class RequestJson
 
 
     /**
-     * Handle external request for an incoming request, if data is not cached,
-     * returning result data
+     * Handle external request for an incoming request, if data is not cached
+     * Storing data to cache
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure $next
