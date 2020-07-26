@@ -36,6 +36,9 @@ class IndexController extends Controller
         /**
          * Middleware implemented
          * @see \App\Http\Middleware\RequestJson
+         *
+         * Getting data from cache
+         *
          * */
         $result = Cache::get(strtolower($request->input('q')));
 
